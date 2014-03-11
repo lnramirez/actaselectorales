@@ -20,11 +20,11 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 LowerX = 145
 UpperX = 355
 
-LowerAY = 465
-UpperAY = 484
+LowerAY = 463
+UpperAY = 486
 
-LowerFY = 484
-UpperFY = 504
+LowerFY = 482
+UpperFY = 508
 
 frect = new PdfRectangle(LowerX,LowerFY,UpperX,UpperFY);
 arect = new PdfRectangle(LowerX,LowerAY,UpperX,UpperAY);
@@ -84,9 +84,11 @@ files = new ArrayList<String>()
 searchFiles(new File("./"),files)
 new File("db.txt").withWriter { out -> 
   files.eachWithIndex { f,i ->
-    if (i > 10) System.exit(0)
-    tuple = cropFile(f.getCanonicalPath())
-    out.println "${f.getName()},${tuple.get(0)},${tuple.get(1)}"
+    //if (i < 10) {
+      tuple = cropFile(f.getCanonicalPath())
+      out.println "${f.getName()},${tuple.get(0)},${tuple.get(1)}"
+    //}
+    
   }
 }
 
